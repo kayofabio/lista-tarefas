@@ -1,11 +1,20 @@
 import Header from "./components/Header";
 import FormularioTarefa from "./components/FormularioTarefa";
 import TarefaItem from "./components/TarefaItem";
+import Filtros from "./components/Filtros";
 import { useState } from "react";
+import "./styles/App.css";
 
 function App() {
 
   const [tarefas, setTarefas] = useState([]);
+
+  const [filtro, setFiltro] = useState("todas");
+  const tarefasFiltradas = tarefas.filter(tarefa => {
+    if (filtro === "ativas") return !tarefa.concluida;
+    if (filtro === "concluidas") return tarefa.concluida;
+    return true;
+  });
 
   function adicionarTarefa(texto) {
     const novaTarefa = {
@@ -31,10 +40,12 @@ function App() {
     <>
       <Header titulo="Lista de Tarefas" subtitulo="Projeto React" />
 
+      <Filtros filtro={filtro} setFiltro={setFiltro} />
+
       <FormularioTarefa adicionarTarefa={adicionarTarefa} />
 
       <ul>
-        {tarefas.map((tarefa) => (
+        {tarefasFiltradas.map((tarefa) => (
           <TarefaItem
             key={tarefa.id}
             tarefa={tarefa}

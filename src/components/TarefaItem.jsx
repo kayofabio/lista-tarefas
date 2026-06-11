@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 function TarefaItem({ tarefa, concluirTarefa, removerTarefa }) {
     return (
         <li>
