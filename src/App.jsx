@@ -2,7 +2,6 @@ import Header from "./components/Header";
 import FormularioTarefa from "./components/FormularioTarefa";
 import TarefaItem from "./components/TarefaItem";
 import { useState } from "react";
-import "./styles/App.css";
 
 function App() {
 
@@ -24,6 +23,10 @@ function App() {
     ));
   }
 
+  function removerTarefa(id) {
+    setTarefas(tarefas.filter(tarefa => tarefa.id !== id));
+  }
+
   return (
     <>
       <Header titulo="Lista de Tarefas" subtitulo="Projeto React" />
@@ -36,6 +39,7 @@ function App() {
             key={tarefa.id}
             tarefa={tarefa}
             concluirTarefa={concluirTarefa}
+            removerTarefa={removerTarefa}
           />
         ))}
       </ul>

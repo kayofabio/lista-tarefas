@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function TarefaItem({ tarefa, concluirTarefa }) {
+function TarefaItem({ tarefa, concluirTarefa, removerTarefa }) {
     return (
         <li>
             <span
@@ -12,6 +12,11 @@ function TarefaItem({ tarefa, concluirTarefa }) {
                 onClick={() => concluirTarefa(tarefa.id)}
             >
                 ✓
+            </button>
+            <button
+                onClick={() => removerTarefa(tarefa.id)}
+            >
+                ✕
             </button>
         </li>
     );
