@@ -2,6 +2,7 @@ import Header from "./components/Header";
 import FormularioTarefa from "./components/FormularioTarefa";
 import TarefaItem from "./components/TarefaItem";
 import { useState } from "react";
+import "./styles/App.css";
 
 function App() {
 
@@ -15,13 +16,12 @@ function App() {
     };
 
     setTarefas([...tarefas, novaTarefa]);
-    console.log(tarefas[0]);
   }
 
   function concluirTarefa(id) {
-    setTarefas(tarefas.map(tarefa => {
-      tarefa.id === id ? {...tarefa, concluida: !tarefa.concluida} : tarefa;
-    }));
+    setTarefas(tarefas.map(tarefa =>
+      tarefa.id === id ? { ...tarefa, concluida: !tarefa.concluida } : tarefa
+    ));
   }
 
   return (
