@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Formulario, Input, InputBotao } from "../styles/components/Formulario.styles";
 
 function FormularioTarefa({adicionarTarefa}) {
     const [texto, setTexto] = useState("");
@@ -10,16 +11,16 @@ function FormularioTarefa({adicionarTarefa}) {
     }
 
     return (
-        <form onSubmit={enviar}>
-            <input
+        <Formulario onSubmit={enviar}>
+            <Input
                 type="text"
                 placeholder="Digite a tarefa"
                 value={texto}
                 onChange={(e) => setTexto(e.target.value)}
             />
 
-            <button type="submit">Adicionar</button>
-        </form>
+            <InputBotao type="submit">Adicionar</InputBotao>
+        </Formulario>
     );
 }
 

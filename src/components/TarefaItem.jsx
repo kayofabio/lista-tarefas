@@ -1,22 +1,23 @@
+import styled from "styled-components";
+import { TarefaContainer, TarefaTexto, TarefaBotao } from "../styles/components/Tarefa.styles";
+
 function TarefaItem({ tarefa, concluirTarefa, removerTarefa }) {
     return (
-        <li>
-            <span
-                style={{ textDecoration: tarefa.concluida ? "line-through" : "none", color: tarefa.concluida ? "green" : "black" }}
-            >
+        <TarefaContainer>
+            <TarefaTexto concluida={tarefa.concluida}>
                 {tarefa.texto}
-            </span>
-            <button
+            </TarefaTexto>
+            <TarefaBotao
                 onClick={() => concluirTarefa(tarefa.id)}
             >
                 ✓
-            </button>
-            <button
+            </TarefaBotao>
+            <TarefaBotao
                 onClick={() => removerTarefa(tarefa.id)}
             >
                 ✕
-            </button>
-        </li>
+            </TarefaBotao>
+        </TarefaContainer>
     );
 }
 

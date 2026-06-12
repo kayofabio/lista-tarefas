@@ -6,8 +6,7 @@ import { ThemeProvider } from "styled-components";
 import GlobalStyle from "./styles/GlobalStyle";
 import { lightTheme, darkTheme } from "./styles/themes";
 import { useState } from "react";
-
-import "./styles/App.css";
+import { BotaoTema } from "./styles/components/BotaoTema.styles";
 
 function App() {
 
@@ -46,11 +45,11 @@ function App() {
     <ThemeProvider theme={temaEscuro ? darkTheme : lightTheme}>
       <GlobalStyle />
       
-      <button onClick={() => setTemaEscuro((valorAtual) => !valorAtual)}>
+      <BotaoTema onClick={() => setTemaEscuro((valorAtual) => !valorAtual)}>
         {temaEscuro ? "Modo Claro" : "Modo Escuro"}
-      </button>
+      </BotaoTema>
 
-      <Header titulo="Lista de Tarefas" subtitulo="Projeto React" />
+      <Header titulo="Lista de Tarefas" subtitulo="Projeto React frontend" />
 
       <Filtros filtro={filtro} setFiltro={setFiltro} />
 
