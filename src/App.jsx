@@ -2,10 +2,16 @@ import Header from "./components/Header";
 import FormularioTarefa from "./components/FormularioTarefa";
 import TarefaItem from "./components/TarefaItem";
 import Filtros from "./components/Filtros";
+import { ThemeProvider } from "styled-components";
+import GlobalStyle from "./styles/GlobalStyle";
+import { lightTheme, darkTheme } from "./styles/themes";
 import { useState } from "react";
+
 import "./styles/App.css";
 
 function App() {
+
+  const [temaEscuro, setTemaEscuro] = useState(false);
 
   const [tarefas, setTarefas] = useState([]);
 
@@ -37,7 +43,13 @@ function App() {
   }
 
   return (
-    <>
+    <ThemeProvider theme={temaEscuro ? darkTheme : lightTheme}>
+      <GlobalStyle />
+      
+      <button onClick={() => setTemaEscuro((valorAtual) => !valorAtual)}>
+        {temaEscuro ? "Modo Claro" : "Modo Escuro"}
+      </button>
+
       <Header titulo="Lista de Tarefas" subtitulo="Projeto React" />
 
       <Filtros filtro={filtro} setFiltro={setFiltro} />
@@ -54,7 +66,7 @@ function App() {
           />
         ))}
       </ul>
-    </>
+    </ThemeProvider>
   );
 }
 
